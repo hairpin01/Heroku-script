@@ -46,7 +46,7 @@ if ! cd Heroku &> /dev/null; then
 	elif command -v apt &> /dev/null; then
 		echo "У вас ubunta/дебиан"
 		sleep 0.5
-		if command -v pip &> /dev/null  &&  command -v python3 &> /dev/null &&  command -v  git &> /dev/null; then
+		if command -v rust &> /dev/null && command -v pip &> /dev/null  &&  command -v python3 &> /dev/null &&  command -v  git &> /dev/null; then
 			echo "кочать пакеты не надо"
 		else
 			echo "опа у вас ниту чивота"
@@ -56,7 +56,7 @@ if ! cd Heroku &> /dev/null; then
 				sleep 0.5
 				pkg update
 				pkg upgrade -y
-				pkg install python3 python-pip git -y
+				pkg install python3 python-pip git rust -y
 			else 
 				sudo apt install python-pip python3 git -y
 			fi
