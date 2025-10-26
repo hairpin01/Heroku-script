@@ -58,6 +58,8 @@ if ! cd Heroku &> /dev/null; then
 				pkg upgrade -y
 				pkg install python python-pip git rust -y
 			else 
+				sudo apt update
+				sudo apt upgrade -y
 				sudo apt install python-pip python3 git -y
 			fi
 		fi
