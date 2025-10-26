@@ -25,7 +25,7 @@ if ! cd Heroku &> /dev/null; then
 	echo "лан ща установлю, и инет проверим"
 	sleep 1
 	echo "[...]"
-	if ! ping google.com -c 4 &> ~/log-her.log; then
+	if ! ping -c 4 1.1.1.1 &> log-her.log; then
 		echo "У вас нету инета, пака"
 		exit 1
 	fi
@@ -56,7 +56,7 @@ if ! cd Heroku &> /dev/null; then
 				sleep 0.5
 				pkg update
 				pkg upgrade -y
-				pkg install python3 python-pip git rust -y
+				pkg install python python-pip git rust -y
 			else 
 				sudo apt install python-pip python3 git -y
 			fi
