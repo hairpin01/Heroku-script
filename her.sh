@@ -18,6 +18,10 @@ echo "|  _  |  __/ | | (_) |   <| |_| | | | | | \__ \ || (_| | | |  __/ |   "
 sleep 0.2
 echo "|_| |_|\___|_|  \___/|_|\_\__.__| |_|_| |_|___/\__\__._|_|_|\___|_|   "
 sleep 0.5
+echo "======================================================="
+sleep 0.3
+echo "by @harpin00"
+
 
 echo "\nЗапуск хероку"
 if ! cd Heroku &> /dev/null; then 
@@ -25,7 +29,7 @@ if ! cd Heroku &> /dev/null; then
 	echo "лан ща установлю, и инет проверим"
 	sleep 1
 	echo "[...]"
-	if ! ping -c 4 1.1.1.1 &> log-her.log; then
+	if ! /bin/ping -c 4 1.1.1.1 &> log-her.log; then
 		echo "У вас нету инета, пака"
 		exit 1
 	fi
@@ -94,9 +98,15 @@ if ! cd Heroku &> /dev/null; then
 	echo "Скачиваем библиотеки питона через pip"
 	echo "[   ]" 
 	sleep 0.5
-	pip install --upgrade pip
-	echo "\n[#. ]"
- 	if !  pip install -r requirements.txt > /dev/null; then
+	if pip install --upgrade pip &> log-her.log ; then
+		echo "[#. ]"
+	else
+		echo "[ERROR]"
+		sleep 0.5
+		echo "log:"
+		/bin/cat log-her.log
+	fi
+ 	if !  pip install -r requirements.txt &> /dev/null; then
 		echo "ой чот нито, ща ща"
 		sudo pacman -S python-pip
 		echo "\nпробую заного"
@@ -121,7 +131,7 @@ echo "[   ]"
 sleep 3
 echo "Запуск"
 sleep 0.3
-if ! ping -c 1  google.com > log-her.log; then
+if ! /bin/ping -c 1 1.1.1.1 &> log-her.log; then
 	echo "\n[!!!]"
 	echo  "[ERROR] No internet connection..."
 	sleep 1
@@ -159,5 +169,3 @@ else
 fi
 echo "[###]"
 python3 -m heroku --no-web
-
-
