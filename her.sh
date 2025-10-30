@@ -36,10 +36,10 @@ if ! cd Heroku &> /dev/null; then
 	echo "[###]"
 	sleep 1
 	echo "сматрю есть ли у вас нужные пакеты"
-	if command -v pacman &> /dev/null; then
+	if command -v pacman &> log-her.log; then
 		echo "у вас pacman"
 		sleep 1
-	  	if command -v pip &> /dev/null  && command -v python3 &> /dev/null  && command -v git &> /dev/null; then
+	  	if command -v pip &>  log-her.log  && command -v python3 &>  log-her.log  && command -v git &>  log-her.log; then
 			echo "кочать пакеты не надо"
 			sleep 0.5
 		else
@@ -47,15 +47,15 @@ if ! cd Heroku &> /dev/null; then
 			sleep 1
 			sudo pacman -S python-pip python3 git
 		fi
-	elif command -v apt &> /dev/null; then
+	elif command -v apt &>  log-her.log; then
 		echo "У вас ubunta/дебиан"
 		sleep 0.5
-		if command -v rust &> /dev/null && command -v pip &> /dev/null  &&  command -v python3 &> /dev/null &&  command -v  git &> /dev/null; then
+		if command -v rust &>  log-her.log && command -v pip &>  log-her.log  &&  command -v python3 &>  log-her.log &&  command -v  git &>  log-her.log; then
 			echo "кочать пакеты не надо"
 		else
 			echo "опа у вас ниту чивота"
 			sleep 1
-			if command -v pkg &> /dev/null; then
+			if command -v pkg &>  log-her.log; then
 				echo "а, у вас термукс нахуй"
 				sleep 0.5
 				pkg update
@@ -79,7 +79,7 @@ if ! cd Heroku &> /dev/null; then
 	fi
 	sleep 0.5
 	echo "лан, качаю хероку"
-	if ! git clone https://github.com/coddrago/Heroku &> /dev/null; then
+	if ! git clone https://github.com/coddrago/Heroku &>  log-her.log; then
 		echo "\nсори, но скочать не удаётся"
 		exit 1
 	fi
@@ -98,7 +98,7 @@ if ! cd Heroku &> /dev/null; then
 	echo "Скачиваем библиотеки питона через pip"
 	echo "[   ]" 
 	sleep 0.5
-	if pip install --upgrade pip &> log-her.log ; then
+	if pip install --upgrade pip &>  log-her.log ; then
 		echo "[#. ]"
 	else
 		echo "[ERROR]"
@@ -106,11 +106,11 @@ if ! cd Heroku &> /dev/null; then
 		echo "log:"
 		/bin/cat log-her.log
 	fi
- 	if !  pip install -r requirements.txt &> /dev/null; then
+ 	if !  pip install -r requirements.txt &>  log-her.log; then
 		echo "ой чот нито, ща ща"
 		sudo pacman -S python-pip
 		echo "\nпробую заного"
-		if !  pip install -r requirements.txt > /dev/null; then
+		if !  pip install -r requirements.txt >  log-her.log; then
 			echo "та бля тахда я хз"
 			sleep 1
 			exit 1
@@ -148,7 +148,7 @@ else
 fi
 echo "[.. ]"
 sleep 0.6
-if command -v python3 &> /dev/null; then
+if command -v python3 &>  log-her.log; then
 	;
 else
 	echo "[!!!]"
