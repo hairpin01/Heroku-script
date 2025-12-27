@@ -139,7 +139,7 @@ if [[ ! -d "Heroku" ]]; then
     sleep 0.5
     echo "патом ещо раз запусти скрипт, или сам запусти хероку"
     echo "так щас пажди не многа"
-    python3 -m heroku --no-web &>/dev/null
+    python3 -m heroku --no-web --root &>/dev/null 
     exit 0
 fi
 
