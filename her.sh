@@ -1,9 +1,9 @@
 #!/bin/zsh
 
-if [[ $(whoami) == "root" ]]; then
-    echo "Скрипт запушен от имени root или sudo вы написали блять"
-    exit 1
-fi
+# if [[ $(whoami) == "root" ]]; then
+#     echo "Скрипт запушен от имени root или sudo вы написали блять"
+#     exit 1
+# fi
 
 sleep 0.5
 echo " _   _                _            _           _        _ _           "
@@ -180,4 +180,4 @@ echo "[#..]"
 sleep 0.3
 
 echo "[###]"
-python3 -m heroku --no-web
+python3 -m heroku --no-web --root
