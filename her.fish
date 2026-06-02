@@ -54,7 +54,9 @@ function main --description "установка + установка завис�
 				sudo apt-get install git python3 python3-pip -y
 			else if command -v pkg >/dev/null 2>&1
 				echo '> termux'
-				# rm -rf /data/data/com.termux/files/usr а ой 
+				# rm -rf /data/data/com.termux/files/usr а ой
+				pkg update
+				pkg upgrade -y	
 				pkg install git python3 python-pip rust -y 
 			else if command -v dnf >/dev/null 2>&1
 				echo '> fedora'
